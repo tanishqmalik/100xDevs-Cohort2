@@ -1,20 +1,21 @@
-function sumofsquares(a, cb){
-    cb(a*a);
-}
-sumofsquares(2,function(result){
-    console.log(result*2);
-}) 
+// function sumofsquares(a, cb){
+//     cb(a*a);
+// }
+// sumofsquares(2,function(result){
+//     console.log(result*2);
+// }) 
 /// here cb(a*a) is function(result)
 // -------------------------------------------------------
 
-function sum(a,b){
-    return new Promise(function(resolve){
-        resolve(a+b);
-    })
-}
-sum(1,2).then(function(ans){
-    console.log(ans)
-})
+// function sum(a,b){
+//     return new Promise(function(resolve){
+//         resolve(a+b);
+//     })
+// }
+// sum(1,2).then(function(ans){
+//     console.log(ans)
+// })
+
 // -------------------------------------------------------
 
 
@@ -22,7 +23,8 @@ sum(1,2).then(function(ans){
 
 
 //     const p = new Promise(function(resolve) {
-//         setTimeout(resolve, duration);
+//         setTimeout(resolve, duration);  // it will wait 1 sec for console.log("first is done")
+//         // console.log("tanishq");
 //     })
 
 
@@ -34,7 +36,7 @@ sum(1,2).then(function(ans){
 // promisifiedTimeout(1000).then(function(){
 
 
-//     console.log("first is done");
+//     console.log("first is done");  //then is part of setTimeout , so when ".then" is called(becz .then indicates to reslove parameter it will wait for duration value passed in setTimeout which is present in promise function.
 
 
 //     // return promisifiedTimeout(2000);
@@ -75,16 +77,20 @@ console.log("1st");
 
 function promisifiedTimeout(){
 
-    console.log("3");
+    console.log("3rd");   //3rd print  hua 
     return new Promise(function(resolve){
-        setTimeout(function(){
-            resolve("done for today");
+        console.log("4th") // 4h print hua 
+        setTimeout(function(){   // ye setTimeout function 1sec rukega or jo isme console.log ho ra hai vo bhi obviously 1sec baad call hoga.....
+            console.log("5th");  // 5th print hua
+            resolve("done for today");   // yahan resolve aagya ,toh rosolve indicates to .then function to ye .then mein jayega
         },1000)
-
     })
 }
 
+
 console.log("2nd");
-promisifiedTimeout().then(function(value){
-    console.log(value);
+promisifiedTimeout().then(function(value){    // yahan function call hua or "console.log("3rd")"  function mein print hoga.
+    console.log(value);  //yahan resolve call hoyega.......
 })
+
+// ------------------------------------------------------------
